@@ -1,0 +1,24 @@
+@skin-color: #6aa5f1;
+@assets-img: '../images/';
+.flex(@justify-content: center, @align-items: center) when (iskeyword(@justify-content)),
+(iskeyword(@align-items)) {
+    display: flex;
+    justify-content: @justify-content;
+    align-items: @align-items;
+}
+
+//检测参数类型 iscolor isnumber isstring iskeyword isurl
+.font(@font-size, @color: #333, @text-align: left) when (ispixel(@font-size)),
+(iscolor(@color)),
+(iskeyword(@text-align)) {
+    font-size: @font-size;
+    color: @color;
+    text-align: @text-align;
+}
+
+//检测参数单位 ispixel ispercentage isem isunit
+.wh(@w, @h) when (ispixel(@w))or(ispercentage(@w)),
+(ispixel(@h))or(ispercentage(@h)) {
+    width: @w;
+    height: @h;
+}
